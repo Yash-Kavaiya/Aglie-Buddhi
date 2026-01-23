@@ -1,0 +1,24 @@
+{
+  "name": "my-video",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render PromoVideo out/promo.mp4",
+    "build": "remotion render PromoVideo out/promo.mp4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@remotion/cli": "^4.0.409",
+    "@remotion/player": "^4.0.409",
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "remotion": "^4.0.409",
+    "typescript": "^5.9.3"
+  }
+}
