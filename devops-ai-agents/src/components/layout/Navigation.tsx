@@ -40,28 +40,28 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
   AlertTriangle,
 };
 
-// Map agent colors to Tailwind classes
+// Map agent colors to Tailwind classes - Google colors
 const colorMap: Record<string, string> = {
-  blue: 'text-blue-500',
-  green: 'text-emerald-500',
-  yellow: 'text-amber-500',
-  red: 'text-red-500',
-  cyan: 'text-cyan-500',
-  purple: 'text-purple-500',
-  orange: 'text-orange-500',
-  pink: 'text-pink-500',
+  blue: 'text-[#4285f4]',
+  green: 'text-[#34a853]',
+  yellow: 'text-[#fbbc04]',
+  red: 'text-[#ea4335]',
+  cyan: 'text-[#4285f4]',
+  purple: 'text-[#4285f4]',
+  orange: 'text-[#fbbc04]',
+  pink: 'text-[#ea4335]',
 };
 
-// Map agent colors to gradient backgrounds for active state
+// Map agent colors to gradient backgrounds for active state - Google style
 const activeGradientMap: Record<string, string> = {
-  blue: 'bg-gradient-to-r from-blue-50 to-indigo-50 border-l-blue-500',
-  green: 'bg-gradient-to-r from-emerald-50 to-green-50 border-l-emerald-500',
-  yellow: 'bg-gradient-to-r from-amber-50 to-yellow-50 border-l-amber-500',
-  red: 'bg-gradient-to-r from-red-50 to-rose-50 border-l-red-500',
-  cyan: 'bg-gradient-to-r from-cyan-50 to-sky-50 border-l-cyan-500',
-  purple: 'bg-gradient-to-r from-purple-50 to-violet-50 border-l-purple-500',
-  orange: 'bg-gradient-to-r from-orange-50 to-amber-50 border-l-orange-500',
-  pink: 'bg-gradient-to-r from-pink-50 to-rose-50 border-l-pink-500',
+  blue: 'bg-blue-50 border-l-[#4285f4]',
+  green: 'bg-green-50 border-l-[#34a853]',
+  yellow: 'bg-yellow-50 border-l-[#fbbc04]',
+  red: 'bg-red-50 border-l-[#ea4335]',
+  cyan: 'bg-blue-50 border-l-[#4285f4]',
+  purple: 'bg-blue-50 border-l-[#4285f4]',
+  orange: 'bg-yellow-50 border-l-[#fbbc04]',
+  pink: 'bg-red-50 border-l-[#ea4335]',
 };
 
 export function Navigation({ 
@@ -75,19 +75,19 @@ export function Navigation({
     }
   };
 
-  // Base classes for links
+  // Base classes for links - Google Material Design
   const baseLinkClass = isCollapsed
-    ? 'flex items-center justify-center p-3 rounded-xl transition-all duration-200 relative group'
-    : 'flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 border-l-3 border-transparent';
+    ? 'flex items-center justify-center p-3 rounded-full transition-all duration-200 relative group'
+    : 'flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-full transition-all duration-200';
   
-  const inactiveLinkClass = `${baseLinkClass} text-gray-600 hover:bg-gray-100/80 hover:text-gray-900`;
-  const activeLinkClass = `${baseLinkClass} bg-gradient-to-r from-indigo-50 to-purple-50 text-gray-900 border-l-indigo-500`;
+  const inactiveLinkClass = `${baseLinkClass} text-[#5f6368] hover:bg-gray-100`;
+  const activeLinkClass = `${baseLinkClass} bg-blue-50 text-[#4285f4]`;
 
-  // Tooltip component for collapsed state
+  // Tooltip component for collapsed state - Google style
   const Tooltip = ({ children }: { children: React.ReactNode }) => (
-    <span className="absolute left-full ml-3 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-lg z-50">
+    <span className="absolute left-full ml-2 px-3 py-2 bg-[#202124] text-white text-xs font-normal rounded-lg whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 shadow-elevated z-50">
       {children}
-      <span className="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 border-4 border-transparent border-r-gray-900" />
+      <span className="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 border-4 border-transparent border-r-[#202124]" />
     </span>
   );
 
@@ -105,18 +105,18 @@ export function Navigation({
         data-testid="nav-link-dashboard"
         title={isCollapsed ? 'Dashboard' : undefined}
       >
-        <LayoutDashboard size={20} className="text-gray-500 shrink-0" />
+        <LayoutDashboard size={20} className="text-[#5f6368] shrink-0" />
         {!isCollapsed && <span>Dashboard</span>}
         {isCollapsed && <Tooltip>Dashboard</Tooltip>}
       </NavLink>
 
-      {/* Divider */}
-      <div className="my-4 border-t border-gray-200" />
+      {/* Divider - Google style */}
+      <div className="my-4 border-t border-[#e8eaed]" />
 
       {/* Agent Links */}
       <div className="space-y-1">
         {!isCollapsed && (
-          <p className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+          <p className="px-4 py-2 text-xs font-medium text-[#5f6368] uppercase tracking-wide">
             AI Agents
           </p>
         )}
@@ -132,14 +132,14 @@ export function Navigation({
               onClick={handleClick}
               className={({ isActive }) => 
                 isActive 
-                  ? `${baseLinkClass} ${activeGradient} text-gray-900`
+                  ? `${baseLinkClass} ${activeGradient} text-[#202124]`
                   : inactiveLinkClass
               }
               data-testid={`nav-link-${agent.id}`}
               title={isCollapsed ? agent.name : undefined}
             >
               {IconComponent && (
-                <div className={`${colorClass} shrink-0 transition-transform duration-200 group-hover:scale-110`}>
+                <div className={`${colorClass} shrink-0 transition-transform duration-150 group-hover:scale-105`}>
                   <IconComponent size={20} />
                 </div>
               )}

@@ -35,52 +35,52 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
   AlertTriangle,
 };
 
-// Map agent colors to gradient classes
+// Map agent colors to gradient classes - Google colors
 const gradientMap: Record<string, string> = {
-  blue: 'from-blue-500 to-blue-600',
-  green: 'from-emerald-500 to-emerald-600',
-  yellow: 'from-amber-500 to-amber-600',
-  red: 'from-red-500 to-red-600',
-  cyan: 'from-cyan-500 to-cyan-600',
-  purple: 'from-purple-500 to-purple-600',
-  orange: 'from-orange-500 to-orange-600',
-  pink: 'from-pink-500 to-pink-600',
+  blue: 'from-[#4285f4] to-[#1967d2]',
+  green: 'from-[#34a853] to-[#188038]',
+  yellow: 'from-[#fbbc04] to-[#f29900]',
+  red: 'from-[#ea4335] to-[#c5221f]',
+  cyan: 'from-[#4285f4] to-[#1967d2]',
+  purple: 'from-[#4285f4] to-[#1967d2]',
+  orange: 'from-[#fbbc04] to-[#f29900]',
+  pink: 'from-[#ea4335] to-[#c5221f]',
 };
 
-// Map agent colors to light background classes
+// Map agent colors to light background classes - Google colors
 const bgLightMap: Record<string, string> = {
   blue: 'bg-blue-50 group-hover:bg-blue-100',
-  green: 'bg-emerald-50 group-hover:bg-emerald-100',
-  yellow: 'bg-amber-50 group-hover:bg-amber-100',
+  green: 'bg-green-50 group-hover:bg-green-100',
+  yellow: 'bg-yellow-50 group-hover:bg-yellow-100',
   red: 'bg-red-50 group-hover:bg-red-100',
-  cyan: 'bg-cyan-50 group-hover:bg-cyan-100',
-  purple: 'bg-purple-50 group-hover:bg-purple-100',
-  orange: 'bg-orange-50 group-hover:bg-orange-100',
-  pink: 'bg-pink-50 group-hover:bg-pink-100',
+  cyan: 'bg-blue-50 group-hover:bg-blue-100',
+  purple: 'bg-blue-50 group-hover:bg-blue-100',
+  orange: 'bg-yellow-50 group-hover:bg-yellow-100',
+  pink: 'bg-red-50 group-hover:bg-red-100',
 };
 
-// Map agent colors to text classes
+// Map agent colors to text classes - Google colors
 const textColorMap: Record<string, string> = {
-  blue: 'text-blue-600',
-  green: 'text-emerald-600',
-  yellow: 'text-amber-600',
-  red: 'text-red-600',
-  cyan: 'text-cyan-600',
-  purple: 'text-purple-600',
-  orange: 'text-orange-600',
-  pink: 'text-pink-600',
+  blue: 'text-[#4285f4]',
+  green: 'text-[#34a853]',
+  yellow: 'text-[#fbbc04]',
+  red: 'text-[#ea4335]',
+  cyan: 'text-[#4285f4]',
+  purple: 'text-[#4285f4]',
+  orange: 'text-[#fbbc04]',
+  pink: 'text-[#ea4335]',
 };
 
-// Map agent colors to ring classes
+// Map agent colors to ring classes - Google colors
 const ringColorMap: Record<string, string> = {
-  blue: 'focus:ring-blue-500/30',
-  green: 'focus:ring-emerald-500/30',
-  yellow: 'focus:ring-amber-500/30',
-  red: 'focus:ring-red-500/30',
-  cyan: 'focus:ring-cyan-500/30',
-  purple: 'focus:ring-purple-500/30',
-  orange: 'focus:ring-orange-500/30',
-  pink: 'focus:ring-pink-500/30',
+  blue: 'focus:ring-[#4285f4]/20',
+  green: 'focus:ring-[#34a853]/20',
+  yellow: 'focus:ring-[#fbbc04]/20',
+  red: 'focus:ring-[#ea4335]/20',
+  cyan: 'focus:ring-[#4285f4]/20',
+  purple: 'focus:ring-[#4285f4]/20',
+  orange: 'focus:ring-[#fbbc04]/20',
+  pink: 'focus:ring-[#ea4335]/20',
 };
 
 export function AgentCard({ agent }: AgentCardProps) {
@@ -102,49 +102,49 @@ export function AgentCard({ agent }: AgentCardProps) {
   return (
     <button
       onClick={handleClick}
-      className={`group w-full text-left p-5 bg-white rounded-2xl border border-gray-200/80 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 ${ringColor}`}
+      className={`group w-full text-left p-6 bg-white rounded-2xl border border-[#dadce0] hover:shadow-glow transition-all duration-200 focus:outline-none focus:ring-2 ${ringColor}`}
       data-testid={`agent-card-${agent.id}`}
       data-agent-id={agent.id}
     >
       {/* Top row with icon and arrow */}
       <div className="flex items-start justify-between mb-4">
-        {/* Icon with gradient background */}
-        <div className={`relative inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} shadow-lg shadow-${agent.color}-500/25 transition-transform duration-300 group-hover:scale-110`}>
-          {IconComponent && <IconComponent size={22} className="text-white" />}
+        {/* Icon with gradient background - Google style */}
+        <div className={`relative inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${gradient} transition-transform duration-200 group-hover:scale-105`}>
+          {IconComponent && <IconComponent size={24} className="text-white" />}
           {/* MCP indicator badge */}
           {mcpCount > 0 && (
-            <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 text-white text-xs font-bold flex items-center justify-center ring-2 ring-white">
+            <div className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-[#34a853] text-white text-xs font-medium flex items-center justify-center ring-2 ring-white">
               {mcpCount}
             </div>
           )}
         </div>
         
         {/* Arrow indicator */}
-        <div className={`p-2 rounded-full ${bgLight} transition-all duration-300 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0`}>
-          <ArrowRight size={16} className={textColor} />
+        <div className={`p-2 rounded-full ${bgLight} transition-all duration-200 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0`}>
+          <ArrowRight size={18} className={textColor} />
         </div>
       </div>
 
-      {/* Name */}
-      <h3 className="text-base font-semibold text-gray-900 mb-1.5 group-hover:text-gray-800" data-testid="agent-card-name">
+      {/* Name - Google typography */}
+      <h3 className="text-base font-medium text-[#202124] mb-2" data-testid="agent-card-name">
         {agent.name}
       </h3>
 
-      {/* Description */}
-      <p className="text-sm text-gray-500 leading-relaxed line-clamp-2" data-testid="agent-card-description">
+      {/* Description - Google typography */}
+      <p className="text-sm text-[#5f6368] leading-relaxed line-clamp-2" data-testid="agent-card-description">
         {agent.description}
       </p>
 
       {/* Bottom indicator bar */}
-      <div className="mt-4 pt-4 border-t border-gray-100">
+      <div className="mt-5 pt-4 border-t border-[#e8eaed]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${gradient} animate-pulse`} />
-            <span className="text-xs text-gray-400 font-medium">Ready to assist</span>
+            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${gradient}`} />
+            <span className="text-xs text-[#5f6368] font-normal">Ready to assist</span>
           </div>
           {mcpCount > 0 && (
-            <div className="flex items-center gap-1 text-xs text-emerald-600 font-medium">
-              <Plug size={12} />
+            <div className="flex items-center gap-1.5 text-xs text-[#34a853] font-medium">
+              <Plug size={13} />
               <span>{mcpCount} MCP{mcpCount !== 1 ? 's' : ''}</span>
             </div>
           )}

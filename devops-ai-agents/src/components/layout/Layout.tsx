@@ -44,24 +44,24 @@ export function Layout({ children }: LayoutProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50" data-testid="layout">
-      {/* Mobile Header - visible on screens < 768px */}
+    <div className="min-h-screen bg-white" data-testid="layout">
+      {/* Mobile Header - Google Material Design */}
       <header 
-        className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200/80 px-4 py-3 shadow-sm"
+        className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#dadce0] px-4 py-3 shadow-soft"
         data-testid="mobile-header"
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-sm">
-              <span className="text-white font-bold text-sm">AI</span>
+            <div className="w-9 h-9 rounded-lg bg-[#4285f4] flex items-center justify-center">
+              <span className="text-white font-medium text-base">AI</span>
             </div>
-            <h1 className="text-lg font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-lg font-normal text-[#202124]">
               DevOps Agents
             </h1>
           </div>
           <button
             onClick={toggleMobileMenu}
-            className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-full text-[#5f6368] hover:bg-gray-100 transition-colors"
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             data-testid="mobile-menu-toggle"
           >
@@ -79,9 +79,9 @@ export function Layout({ children }: LayoutProps) {
         />
       )}
 
-      {/* Mobile Navigation Drawer - screens < 768px */}
+      {/* Mobile Navigation Drawer - Google Material Design */}
       <nav
-        className={`md:hidden fixed top-14 left-0 bottom-0 z-40 w-72 bg-white/95 backdrop-blur-sm border-r border-gray-200/80 shadow-lg transform transition-transform duration-300 ease-in-out ${
+        className={`md:hidden fixed top-14 left-0 bottom-0 z-40 w-72 bg-white border-r border-[#dadce0] shadow-elevated transform transition-transform duration-200 ease-out ${
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
         data-testid="mobile-drawer"
@@ -89,44 +89,44 @@ export function Layout({ children }: LayoutProps) {
         <Navigation isMobile onNavigate={closeMobileMenu} />
       </nav>
 
-      {/* Tablet/Desktop Sidebar - visible on screens >= 768px */}
+      {/* Tablet/Desktop Sidebar - Google Material Design */}
       <aside 
-        className={`hidden md:flex md:flex-col md:fixed md:inset-y-0 md:left-0 bg-white/95 backdrop-blur-sm border-r border-gray-200/80 shadow-sm transition-all duration-300 ease-in-out ${
+        className={`hidden md:flex md:flex-col md:fixed md:inset-y-0 md:left-0 bg-white border-r border-[#dadce0] shadow-soft transition-all duration-200 ease-out ${
           isTabletSidebarCollapsed 
             ? 'md:w-16' 
             : 'md:w-64 lg:w-72'
         }`}
         data-testid="desktop-sidebar"
       >
-        {/* Sidebar Header */}
-        <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200/80">
+        {/* Sidebar Header - Google style */}
+        <div className="flex items-center justify-between h-16 px-4 border-b border-[#e8eaed]">
           {!isTabletSidebarCollapsed && (
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-sm">
-                <span className="text-white font-bold text-sm">AI</span>
+              <div className="w-9 h-9 rounded-lg bg-[#4285f4] flex items-center justify-center">
+                <span className="text-white font-medium text-base">AI</span>
               </div>
-              <h1 className="text-lg font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent truncate">
+              <h1 className="text-lg font-normal text-[#202124] truncate">
                 DevOps Agents
               </h1>
             </div>
           )}
           {isTabletSidebarCollapsed && (
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-sm mx-auto">
-              <span className="text-white font-bold text-sm">AI</span>
+            <div className="w-9 h-9 rounded-lg bg-[#4285f4] flex items-center justify-center mx-auto">
+              <span className="text-white font-medium text-base">AI</span>
             </div>
           )}
-          {/* Tablet collapse toggle - visible between 768px and 1024px */}
+          {/* Tablet collapse toggle */}
           <button
             onClick={toggleTabletSidebar}
-            className="hidden md:flex lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-all ml-auto"
+            className="hidden md:flex lg:hidden p-2 rounded-full text-[#5f6368] hover:bg-gray-100 transition-all ml-auto"
             aria-label={isTabletSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             data-testid="tablet-sidebar-toggle"
           >
-            {isTabletSidebarCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+            {isTabletSidebarCollapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
           </button>
         </div>
         
-        {/* Navigation - show full or collapsed version */}
+        {/* Navigation */}
         <Navigation isCollapsed={isTabletSidebarCollapsed} />
       </aside>
 
