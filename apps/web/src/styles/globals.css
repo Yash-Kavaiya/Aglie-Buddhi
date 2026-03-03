@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --nvidia-green: #76B900;
+  --nvidia-green-light: #8AD100;
+  --nvidia-green-dark: #5A8F00;
+  --neon-green: #00FF88;
+  --deep-black: #0D0D0D;
+  --carbon: #1A1A1A;
+  --gunmetal: #2D2D2D;
+  --steel: #3D3D3D;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #0D0D0D;
+  color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(118, 185, 0, 0.3);
+  color: #FFFFFF;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3D3D3D;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4D4D4D;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-nvidia-green text-surface-void font-semibold px-6 py-3 rounded-md transition-all duration-200;
+  }
+  
+  .btn-primary:hover {
+    @apply bg-nvidia-green-light;
+    box-shadow: 0 0 20px rgba(118, 185, 0, 0.4);
+    transform: translateY(-1px);
+  }
+  
+  .btn-primary:active {
+    @apply bg-nvidia-green-dark;
+    transform: translateY(0);
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-nvidia-green text-nvidia-green font-medium px-6 py-3 rounded-md transition-all duration-200;
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-nvidia-green/10;
+    box-shadow: 0 0 12px rgba(118, 185, 0, 0.2);
+  }
+  
+  .btn-ai {
+    @apply relative overflow-hidden bg-gradient-to-r from-accent-purple to-accent-blue text-white font-semibold px-6 py-3 rounded-md transition-all duration-200;
+  }
+  
+  .btn-ai::before {
+    content: '';
+    @apply absolute top-0 left-[-100%] w-full h-full;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 2s infinite;
+  }
+  
+  .btn-ai:hover {
+    box-shadow: 0 0 24px rgba(157, 78, 221, 0.5);
+  }
+  
+  .input-field {
+    @apply bg-surface-void border border-surface-slate rounded-md px-4 py-3 text-white placeholder:text-surface-slate/50 transition-all duration-200;
+  }
+  
+  .input-field:hover {
+    @apply border-surface-slate;
+  }
+  
+  .input-field:focus {
+    @apply outline-none border-nvidia-green;
+    box-shadow: 0 0 0 3px rgba(118, 185, 0, 0.15);
+  }
+  
+  .card {
+    @apply bg-surface-graphite border border-surface-gunmetal rounded-xl p-6 transition-all duration-300;
+  }
+  
+  .card:hover {
+    @apply border-surface-slate;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card-interactive:hover {
+    @apply border-nvidia-green/50;
+    box-shadow: 0 8px 32px rgba(118, 185, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .card-ai {
+    @apply border-accent-purple/30;
+    background: linear-gradient(180deg, rgba(157, 78, 221, 0.05) 0%, #1A1A1A 100%);
+  }
+  
+  .card-ai:hover {
+    @apply border-accent-purple/50;
+    box-shadow: 0 8px 32px rgba(157, 78, 221, 0.15);
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold uppercase tracking-wide;
+  }
+  
+  .badge-success {
+    @apply bg-neon-green/15 text-neon-green border border-neon-green/30;
+  }
+  
+  .badge-warning {
+    @apply bg-accent-amber/15 text-accent-amber border border-accent-amber/30;
+  }
+  
+  .badge-error {
+    @apply bg-accent-red/15 text-accent-red border border-accent-red/30;
+  }
+  
+  .badge-info {
+    @apply bg-accent-blue/15 text-accent-blue border border-accent-blue/30;
+  }
+  
+  .badge-ai {
+    @apply bg-gradient-to-r from-accent-purple/20 to-accent-blue/20 text-accent-purple border border-accent-purple/30;
+  }
+  
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-surface-gunmetal transition-all duration-200;
+  }
+  
+  .sidebar-link.active {
+    @apply text-nvidia-green bg-nvidia-green/10 border-l-2 border-nvidia-green;
+  }
+  
+  .skeleton {
+    @apply bg-gradient-to-r from-surface-graphite via-surface-gunmetal to-surface-graphite;
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-nvidia-green to-neon-green bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-ai {
+    @apply bg-gradient-to-r from-accent-purple to-accent-blue bg-clip-text text-transparent;
+  }
+  
+  .border-gradient {
+    border-image: linear-gradient(90deg, #76B900, #00FF88) 1;
+  }
+  
+  .glow-border {
+    box-shadow: 0 0 0 1px rgba(118, 185, 0, 0.3), 0 0 20px rgba(118, 185, 0, 0.1);
+  }
+  
+  .ai-glow-border {
+    box-shadow: 0 0 0 1px rgba(157, 78, 221, 0.3), 0 0 20px rgba(157, 78, 221, 0.1);
+  }
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes ai-processing {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-ai-processing {
+  background: linear-gradient(90deg, #9D4EDD, #00D4FF, #9D4EDD);
+  background-size: 200% 100%;
+  animation: ai-processing 2s linear infinite;
+}
